@@ -4,6 +4,7 @@
 swear1="f##king"
 swear2="motherf##king"
 swear3="s##t"
+swear4="f##k"
 
 # sets worlds_total to 0
 worlds_total=0
@@ -15,7 +16,7 @@ echo "what do you want to do:
    1. delete a world (rm)
    2. backup something (using zip (world/config/whole server))
    3. install a minecraft server
-   4. create a start.sh file (for easy as f##k usage)
+   4. create a start.sh file (for easy as $swear4 usage)
    5. startup a server (requires start.sh)
    6. run a server in screen (work in progress)"
 
