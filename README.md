@@ -1,3 +1,5 @@
-# Minecraft Script!
+# minecraft script!
 [![CodeFactor](https://www.codefactor.io/repository/github/biune/minecraft-script/badge)](https://www.codefactor.io/repository/github/biune/minecraft-script)
-This page is currently in work in progress.
+
+updates
+Dec 29: added the delete world feature!
