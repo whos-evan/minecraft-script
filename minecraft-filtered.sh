@@ -9,8 +9,8 @@ swear4="filtered"
 # sets worlds_total to 0
 worlds_total=0
 
-echo "this is the most simple f##king minecraft mangager in the world."
-clean
+echo "this is the most simple $swear1 minecraft mangager in the world."
+clear
 echo "choose from the list"
 echo "what do you want to do:
    1. delete a world (rm)
