@@ -14,10 +14,11 @@ world_total=0
 echo "this is the most simple $swear1 minecraft mangager in the world."
 sleep 0.5
 clear
+echo "version: 1.0 alpha"
 echo "choose from the list"
 echo "what do you want to do:
    1. delete a world (rm)
-   2. backup something (using zip (world/config/whole server)) | COMING SOON
+   2. backup something (using zip (whole server)) | COMING SOON
    3. install a minecraft server | COMING SOON
    4. create a start.sh file (for easy as $swear4 usage) | COMING SOON
    5. startup a server (requires start.sh) | COMING SOON
@@ -129,3 +130,21 @@ deleted the folder!"
       fi
    fi
 fi # choice = 1
+
+if [ "$choice" = 2 ]; then
+   echo "warning if you backuped today it will be overwrited."
+   read -r -p "press enter to continue"
+   echo "checking prerequisites"
+   echo "running in sudo, you may need to enter a password"
+   sudo apt-get install zip unzip >/dev/null
+
+   # where the script is
+   directory=$(cd $(dirname "$0") && pwd)
+   if [ -d backups ]; then
+      sleep 0
+   else
+      mkdir backups >/dev/null
+   fi
+   sudo zip -r "backups/$(date +'%d-%m-%Y')-mcbackup.zip" "$directory"
+   echo "done."
+fi
