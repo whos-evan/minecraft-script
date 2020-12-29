@@ -50,13 +50,13 @@ $worlds_total. world"
 
          world_total=world_number
 
-         if [ world_number == 1 ]; then
+         if [ "$world_number" == 1 ]; then
             world_1=world
          fi
-         if [ world_number == 2 ]; then
+         if [ "$world_number" == 2 ]; then
             world_2=world
          fi
-         if [ world_number == 3 ]; then
+         if [ "$world_number" == 3 ]; then
             world_3=world
 
             worlds_to_delete=$(expr "$worlds_to_delete" + 1)
@@ -82,13 +82,13 @@ $worlds_total. world_nether"
 
             worlds_to_delete=$(expr "$worlds_to_delete" + 1)
 
-            if [ world_number == 1 ]; then
+            if [ "$world_number" == 1 ]; then
                world_1=world_nether
             fi
-            if [ world_number == 2 ]; then
+            if [ "$world_number" == 2 ]; then
                world_2=world_nether
             fi
-            if [ world_number == 3 ]; then
+            if [ "$world_number" == 3 ]; then
                world_3=world_nether
 
             # nothing was found, so nothing is going to happen here
@@ -110,13 +110,13 @@ $worlds_total. world_the_end"
 
                worlds_to_delete=$(expr "$worlds_to_delete" + 1)
 
-               if [ world_number == 1 ]; then
+               if [ "$world_number" == 1 ]; then
                   world_1=world_the_end
                fi
-               if [ world_number == 2 ]; then
+               if [ "$world_number" == 2 ]; then
                   world_2=world_the_end
                fi
-               if [ world_number == 3 ]; then
+               if [ "$world_number" == 3 ]; then
                   world_3=world_the_end
 
                else
