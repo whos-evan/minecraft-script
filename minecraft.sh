@@ -23,13 +23,13 @@ echo "what do you want to do:
    5. startup a server (requires start.sh)
    6. run a server in screen (work in progress)"
 
-read -p "input the number you want to do here: " choice
+read -p -r "input the number you want to do here: " choice
 
 # deletes a world (option 1)
 
 if [ "$choice" == "1" ]; then
    echo "is the $swear2 script placed in your minecraft server folder?"
-   read -p "type "y" or "n": " script_in_folder
+   read -p -r "type "y" or "n": " script_in_folder
    if [ "$script_in_folder" == "y" ]; then
       echo "please wait as I do totally $swear1 awesome math."
 
@@ -42,7 +42,7 @@ if [ "$choice" == "1" ]; then
 
          worlds=""world""
 
-         worlds_total=$(expr "$worlds_total" + 1)
+         worlds_total=$(("$worlds_total" + 1))
 
          worlds_or="
 
@@ -59,7 +59,7 @@ $worlds_total. world"
          if [ "$world_number" == 3 ]; then
             world_3=world
 
-            worlds_to_delete=$(expr "$worlds_to_delete" + 1)
+            worlds_to_delete=$(("$worlds_to_delete" + 1))
 
          fi
 
@@ -72,7 +72,7 @@ $worlds_total. world"
 
             worlds="$worlds, world_nether"
 
-            worlds_total=$(expr "$worlds_total" + 1)
+            worlds_total=$(("$worlds_total" + 1))
 
             worlds_or="$worlds_or
 
@@ -80,7 +80,7 @@ $worlds_total. world_nether"
 
             world_total=world_nether_number
 
-            worlds_to_delete=$(expr "$worlds_to_delete" + 1)
+            worlds_to_delete=$(("$worlds_to_delete" + 1))
 
             if [ "$world_number" == 1 ]; then
                world_1=world_nether
@@ -100,7 +100,7 @@ $worlds_total. world_nether"
 
                worlds="$worlds, and world_the_end"
 
-               worlds_total=$(expr "$worlds_total" + 1)
+               worlds_total=$(("$worlds_total" + 1))
 
                world_total=world_the_end_number
 
@@ -108,7 +108,7 @@ $worlds_total. world_nether"
 
 $worlds_total. world_the_end"
 
-               worlds_to_delete=$(expr "$worlds_to_delete" + 1)
+               worlds_to_delete=$(("$worlds_to_delete" + 1))
 
                if [ "$world_number" == 1 ]; then
                   world_1=world_the_end
@@ -132,10 +132,10 @@ $worlds_total. world_the_end"
                if [ "$worlds_total" == "0" ]; then
                   echo "No default worlds found this script is pointless if you do not have a default world but I can just delete the folder if you want."
                   echo "Do you want me to delete a folder?"
-                  read -p "Type y/N: " del_folder
+                  read -p -r "Type y/N: " del_folder
 
                   if [ "$del_folder" == "y" ] || [ "$del_folder" == "Y" ]; then
-                     read -p "Type the folder you want to delete: " del_folder
+                     read -p -r "Type the folder you want to delete: " del_folder
                      echo "Deleting."
                      echo "This runs in sudo so you may need to enter a password."
                      sudo rm -rf "$del_folder"
@@ -152,7 +152,7 @@ $worlds_total. world_the_end"
                   echo "which one(s) do you want me to delete?"
                   echo "options are:
 $worlds_or"
-                  read -p "Enter the number next to the folder you want to delete here: " delete
+                  read -p -r "Enter the number next to the folder you want to delete here: " delete
                   if (("$delete" > "$worlds_to_delete")); then
                      echo "Please enter a valid number."
                      echo "Exiting."
