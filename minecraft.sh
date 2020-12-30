@@ -18,9 +18,9 @@ echo "version: 1.0 alpha"
 echo "choose from the list"
 echo "what do you want to do:
    1. delete a world (rm)
-   2. backup something (using zip (whole server)) | COMING SOON
+   2. backup something (using zip (whole server))
    3. install a minecraft server | COMING SOON
-   4. create a start.sh file (for easy as $swear4 usage) | COMING SOON
+   4. create a start.sh file (for easy as $swear4 usage)
    5. startup a server (requires start.sh) | COMING SOON
    6. run a server in screen (work in progress) | COMING SOON"
 
@@ -147,4 +147,47 @@ if [ "$choice" = 2 ]; then
    fi
    sudo zip -r "backups/$(date +'%d-%m-%Y')-mcbackup.zip" "$directory"
    echo "done."
+fi
+
+if [ "$choice" = 3 ]; then
+   echo "coming soon"
+   exit
+fi
+
+if [ "$choice" = 4 ]; then
+   server_jar=$(find . -type f -name "*.jar")
+   if [ -z "$server_jar" ]; then
+      echo "no .jar server file was found."
+      exit
+   else
+      sleep 0
+   fi
+   echo "$(tput setaf 1)Found jar files:
+$(tput sgr0)$server_jar"
+   read -r -p "$(tput setaf 6)Enter the name of the jar file you want to create a start.sh script to: $(tput sgr0)" jar_script
+   if [ -f "$jar_script" ]; then
+      sleep 0
+   else
+      echo "enter a valid file."
+      exit
+   fi
+   echo "how much ram do you want to be used?"
+   read -r -p "enter the number in gb: " ram_gb
+
+   if [ -n "$ram_gb" ] && [ "$ram_gb" -eq "$ram_gb" ] 2>/dev/null; then
+      sleep 0
+   else
+      echo "enter a whole number above 0 or a real number."
+      exit
+   fi
+   echo "got it!"
+   echo "creating start.sh in sudo"
+   sudo touch start.sh
+   sudo chmod a+x start.sh
+   echo "writing: "
+   echo "#!/bin/bash
+
+java -Xms"$ram_gb"G -Xmx"$ram_gb"G -jar "$jar_script"" | sudo tee start.sh
+   sudo chmod +x start.sh
+   echo "file created! run it by typing "sudo ./$server_jar" in the terminal"
 fi
