@@ -38,6 +38,11 @@ case $CHOICE in
     clear
     echo "WARNING: This installs other script from the repository that you got this from!"
     read -r -p "Do you wish to proceed? (type anything to continue or type control-c to cancel): "
+    mkdir minecraft-scripts
+    cd minecraft-scripts
+    wget https://github.com/Biune/minecraft-script/blob/main/features/create-minecraft-server.sh
+    chmod +x create-minecraft-server.sh
+    ./create-minecraft-server.sh
     ;;
 2)
     clear
