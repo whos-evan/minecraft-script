@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ..
+
 clear
 
 echo "This creates a minecraft server from scratch. This is only meant for people that don't have ANY server files.
