@@ -34,6 +34,10 @@ clear
 
 wget "$server_jar_web"
 
+echo "
+
+"
+
 echo "Did it work?"
 read -r -p "Type y/N: " did_it_work
 if [ "$did_it_work" == Y ] || [ "$did_it_work" == y ]; then
@@ -45,6 +49,7 @@ fi
 
 echo "Perfect. Finding the .jar server file saved."
 server_jar_name=$(find -name *.jar)
+
 echo "Do you want to rename $server_jar_name?"
 read -r -p "Type y/N: " rename_question
 if [ "$rename_question" == Y ] || [ "$rename_question" == y ]; then
@@ -79,15 +84,4 @@ echo "#!/bin/bash
 
 java -Xms"$ram_gb"G -Xmx"$ram_gb"G -jar "$server_jar_name"" | sudo tee start.sh
 sudo chmod +x start.sh
-echo "Start.sh created, starting up the server for the first time!"
-
-clear
-
-./start.sh
-clear
-echo "Editing eula.txt."
-sleep 1.75
-nano eula.txt
-echo "Starting up the server again."
-sleep 2
-./start.sh
+echo "Start.sh created to run the server; go into the server directory by typing, `cd minecraft-server`, then start the server by typing `sudo ./start.sh`
