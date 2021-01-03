@@ -40,8 +40,9 @@ case $CHOICE in
     read -r -p "Do you wish to proceed? (type anything to continue or type control-c to cancel): "
     mkdir minecraft-scripts
     cd minecraft-scripts
-    wget https://github.com/Biune/minecraft-script/blob/main/features/create-minecraft-server.sh
-    chmod +x create-minecraft-server.sh
+    rm -rf create-minecraft-server.sh
+    wget https://raw.githubusercontent.com/Biune/minecraft-script/main/features/create-minecraft-server.sh
+    chmod a+x create-minecraft-server.sh
     ./create-minecraft-server.sh
     ;;
 2)
