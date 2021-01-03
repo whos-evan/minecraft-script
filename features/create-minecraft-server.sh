@@ -24,7 +24,7 @@ else
     $(./minecraft.sh)
 fi
 clear
-mkdir minecraft-server
+mkdir minecraft-server 2>/dev/null >/dev/null
 cd minecraft-server
 read -r -p "Enter the download link for the server.jar file: " server_jar_web
 echo "If this part fails then the download link doesn't work."
@@ -75,12 +75,12 @@ fi
 echo "Got it!"
 echo "Creating start.sh."
 
-sudo touch start.sh
-sudo chmod a+x start.sh
+sudo touch start.sh 2>/dev/null >/dev/null
+sudo chmod a+x start.sh 2>/dev/null >/dev/null
 
 echo "Writing: "
 echo "#!/bin/bash
 
 java -Xms"$ram_gb"G -Xmx"$ram_gb"G -jar "$server_jar_name"" | sudo tee start.sh
-sudo chmod +x start.sh
+sudo chmod a+x start.sh 2>/dev/null >/dev/null
 echo "Start.sh created to run the server; go into the server directory by typing, `cd minecraft-server`, then start the server by typing `sudo ./start.sh`
