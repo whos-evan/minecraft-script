@@ -5,8 +5,7 @@ cd ..
 clear
 
 echo "This creates a minecraft server from scratch. This is only meant for people that don't have ANY server files."
-echo "To continue press ENTER."
-read -r
+echo "To continue press ENTER."; read -r
 
 clear
 
